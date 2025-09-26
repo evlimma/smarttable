@@ -24,6 +24,7 @@ class SmartTable
     private $dataPost = null;
     private $orderCol = null;
     private $linkCopy = null;
+    private $classMain = null;
     private $activeSorter = false;
     private $filterFull = false;
     private $defaultFilterColUnic = false;
@@ -66,7 +67,8 @@ class SmartTable
         ?array $orderCol = null,
         ?int $findCount = null,
         ?string $linkCopy = null,
-        ?string $root = null
+        ?string $root = null,
+        ?string $classMain = null, 
     ) {
         if (!$root) {
             echo "Necessário informar o ROOT"; exit;
@@ -111,6 +113,7 @@ class SmartTable
         $this->lineTotal = $lineTotal;
         $this->orderCol = $orderCol;
         $this->linkCopy = $linkCopy;
+        $this->classMain = $classMain;
     }
 
     public function foreachCols(array $cols, string $mogrFontColor, string $mogrBgColor): void
@@ -236,7 +239,7 @@ class SmartTable
             }
         }
 
-        $html = "<div class='blocTblPadrao' idmain='" . ($this->idMain ?? null) . "' idordercol='" . (empty($this->orderCol) ? null : reset($this->orderCol)->orco_id) . "'>";
+        $html = "<div class='blocTblPadrao {$this->classMain}' idmain='" . ($this->idMain ?? null) . "' idordercol='" . (empty($this->orderCol) ? null : reset($this->orderCol)->orco_id) . "'>";
 
         $html .= $this->filterFull();
 

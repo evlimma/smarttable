@@ -1,0 +1,15 @@
+{
+  "name": "actionpack",
+  "version": "1.0.0",
+  "description": "The `ActionPack` trait provides a reusable set of methods for models extending a `DataLayer`-like class (such as `CoffeeCode\\DataLayer`).   It encapsulates common logic for dynamic filtering, paginated queries, and frequent data access operations.",
+  "main": "version.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "version": "node ./version.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

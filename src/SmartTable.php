@@ -36,6 +36,7 @@ class SmartTable
     private $idMain;
     private $disabledMinWidth;
     private $lineTotal;
+    private $idCol = 0;
 
     /**
      * 
@@ -165,6 +166,8 @@ class SmartTable
         ?bool $filtColUnic = null,
         ?int $center = null
     ): void {
+        $this->idCol ++;
+
         $sorterCel = null;
         if ($this->find && $sorter) {
             $this->activeSorter = true;
@@ -185,7 +188,7 @@ class SmartTable
             $this->currentFilterColUnic = true;
         }
 
-        $this->filterCol .= "   <td class='linha_filtro'>";
+        $this->filterCol .= "   <td class='linha_filtro' idCol='{$this->idCol}'>";
         if ($filtColUnic or ($this->defaultFilterColUnic and is_null($filtColUnic))) {
             $this->filterCol .= "           <a href='#filter_col' field-image='" . reset($field) . "' class='imagem_filtro'></a>"
                 . "           <input type='text' filter-type='contem' field-name='" . reset($field) . "' class='column_filter'>";

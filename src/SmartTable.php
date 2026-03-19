@@ -25,6 +25,8 @@ class SmartTable
     private $orderCol = null;
     private $linkCopy = null;
     private $classMain = null;
+    private $sectionTitle = null;
+    private $sectionTitleColor = null;
     private $activeSorter = false;
     private $filterFull = false;
     private $defaultFilterColUnic = false;
@@ -69,7 +71,9 @@ class SmartTable
         ?int $findCount = null,
         ?string $linkCopy = null,
         ?string $root = null,
-        ?string $classMain = null, 
+        ?string $classMain = null,
+        ?string $sectionTitle = null,
+        ?string $sectionTitleColor = null,
     ) {
         if (!$root) {
             echo "Necessário informar o ROOT"; exit;
@@ -115,6 +119,8 @@ class SmartTable
         $this->orderCol = $orderCol;
         $this->linkCopy = $linkCopy;
         $this->classMain = $classMain;
+        $this->sectionTitle = $sectionTitle;
+        $this->sectionTitleColor = $sectionTitleColor;
     }
 
     public function foreachCols(array $cols, string $mogrFontColor, string $mogrBgColor): void
@@ -393,10 +399,13 @@ class SmartTable
                         </div>";
         }
 
-        $html = "<div class='formBuscaRapida " . (empty($this->filterFull) ? "clean" : null) . "'>
-                    {$linkCopy}
+        $titleStyle = $this->sectionTitleColor ? "style='border-color: {$this->sectionTitleColor};'" : "";
+        $sectionTitle = $this->sectionTitle ? "<h2 class='section-title' {$titleStyle}>{$this->sectionTitle}</h2>" : "";
 
-                    <div class='buscaRapida'>
+        $html = "<div class='formBuscaRapida " . (empty($this->filterFull) ? "clean" : null) . "'>"
+                    . $sectionTitle
+                    . $linkCopy
+                    . "<div class='buscaRapida'>
                         <input type='text' name='v' placeholder='Pesquise em todos os campos'>
                         <input type='button' class='btlimparfiltro' value=''>
                         <input type='button' data-post='{$this->dataPost}' class='btfiltro' value=''>

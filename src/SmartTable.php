@@ -96,7 +96,7 @@ class SmartTable
         $this->find = $find;
         $this->primary = $primary;
         $this->registryNo = $registryNo;
-        $this->hrefRow = $hrefRow;
+        $this->hrefRow = $hrefRow ? preg_replace('/\/\{.*?\}/', '', $hrefRow) : null;
 
         $this->sorter = ($this->find ? $sorter : false);
         if ($this->sorter) {

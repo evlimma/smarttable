@@ -134,14 +134,14 @@ class SmartTable
                     continue;
                 }
 
-                if (!controlAccess($el->attr('access') ?? "block", $el->attr('level') ?? 999, true)) {
-                    if (intval($el->attr('level')) === 1) {
-                        $el->removeAttribute('href');
-                        continue;
-                    }
+                // if (!controlAccess($el->attr('access') ?? "block", $el->attr('level') ?? 999, true)) {
+                //     if (intval($el->attr('level')) === 1) {
+                //         $el->removeAttribute('href');
+                //         continue;
+                //     }
 
-                    $el->remove();
-                }
+                //     $el->remove();
+                // }
             }
 
             $this->colsSend(
